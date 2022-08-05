@@ -1,115 +1,115 @@
-import * as React from "react";
-import { Link } from "gatsby";
+/* It creates a footer for the website. */
 
-import logo from "../img/logo.svg";
-import facebook from "../img/social/facebook.svg";
-import instagram from "../img/social/instagram.svg";
-import twitter from "../img/social/twitter.svg";
-import vimeo from "../img/social/vimeo.svg";
-
-const Footer = class extends React.Component {
-  render() {
-    return (
-      <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered">
-          <img
-            src={logo}
-            alt="Kaldi"
-            style={{ width: "14em", height: "10em" }}
-          />
-        </div>
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
-            <div style={{ maxWidth: "100vw" }} className="columns">
-              <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
-                    <li>
-                      <Link to="/" className="navbar-item">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact/examples">
-                        Form Examples
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4 social">
-                <a title="facebook" href="https://facebook.com">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="twitter" href="https://twitter.com">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt="Twitter"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="instagram" href="https://instagram.com">
-                  <img
-                    src={instagram}
-                    alt="Instagram"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="vimeo" href="https://vimeo.com">
-                  <img
-                    src={vimeo}
-                    alt="Vimeo"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    );
-  }
-};
-
-export default Footer;
+import _ from 'lodash';
+import React from 'react';
+import { htmlToReact } from '../utils';
+import ActionLink from './ActionLink';
+export default class Footer extends React.Component {
+    render() {
+        return (
+            <footer id="colophon" className="site-footer outer">
+                <div>
+                    <table cellPadding={0} cellSpacing={0} border={0}>
+                        <tbody>
+                            <tr>
+                                <td
+                                    style={{
+                                        fontFamily: 'Arial, Helvetica, sans-serif',
+                                        fontSize: '7.5pt'
+                                    }}
+                                >
+                                    <table
+                                        width="95%"
+                                        cellPadding={0}
+                                        cellSpacing={0}
+                                        border={0}
+                                        style={{
+                                            fontFamily: 'Arial, Helvetica, sans-serif',
+                                            fontSize: '7.5pt'
+                                        }}
+                                    >
+                                        <tbody>
+                                            <tr>
+                                                <td
+                                                    style={{
+                                                        fontFamily: 'Arial, Helvetica, sans-serif',
+                                                        fontSize: '7.5pt'
+                                                    }}
+                                                    align="left"
+                                                >
+                                                    <a target="_blank" href="https://search.freefind.com/siteindex.html?si=14588965">
+                                                        index
+                                                    </a>
+                                                </td>
+                                                <td
+                                                    style={{
+                                                        fontFamily: 'Arial, Helvetica, sans-serif',
+                                                        fontSize: '7.5pt'
+                                                    }}
+                                                    align="center"
+                                                >
+                                                    <a target="_blank" href="https://search.freefind.com/find.html?si=14588965&m=0&p=0">
+                                                        sitemap
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form
+                                        style={{
+                                            margin: 'auto',
+                                            marginTop: '1px'
+                                        }}
+                                        action="https://search.freefind.com/find.html"
+                                        method="get"
+                                        acceptCharset="utf-8"
+                                        target="_self"
+                                    >
+                                        <input type="hidden" name="si" defaultValue={14588965} />
+                                        <input type="hidden" name="pid" defaultValue="r" />
+                                        <input type="hidden" name="n" defaultValue={0} />
+                                        <input type="hidden" name="_charset_" defaultValue />
+                                        <input type="hidden" name="bcd" defaultValue="÷" />
+                                        <input type="text" name="query" size={15} />
+                                        <input type="submit" defaultValue="search" />
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style={{
+                                        textAlign: 'center',
+                                        fontFamily: 'Arial, Helvetica, sans-serif',
+                                        fontSize: '8 pt',
+                                        paddingTop: '2px'
+                                    }}
+                                ></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {/* <a href="https://pdfcrowd.com/url_to_pdf/?" onclick={`${!this.p ? (href += '&url=' + encodeURIComponent(location.href)) : (this.p = 1)}`}>  Save to PDF </a> */}
+                </div>
+                <div className="inner">
+                    <div id="search" className="inner"></div>
+                    <div className="site-footer-inside">
+                        <p className="site-info">
+                            {_.get(this.props, 'pageContext.site.siteMetadata.footer.content', null) && (
+                                <span className="copyright">{htmlToReact(_.get(this.props, 'pageContext.site.siteMetadata.footer.content', null))}</span>
+                            )}
+                            {_.map(_.get(this.props, 'pageContext.site.siteMetadata.footer.links', null), (action, action_idx) => (
+                                <ActionLink key={action_idx} {...this.props} action={action}></ActionLink>
+                            ))}
+                        </p>
+                        {_.get(this.props, 'pageContext.site.siteMetadata.footer.has_social', null) && (
+                            <div className="social-links">
+                                {_.map(_.get(this.props, 'pageContext.site.siteMetadata.footer.social_links', null), (action, action_idx) => {
+                                    return <ActionLink key={action_idx} {...this.props} action={action} />;
+                                })}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </footer>
+        );
+    }
+}
