@@ -1,85 +1,81 @@
+const siteMetadata = require('./site-metadata.json');
 module.exports = {
-  siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter",
-    description:
-      "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.",
-  },
-  plugins: [
-    "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-sass",
-      options: {
-        sassOptions: {
-          indentedSyntax: true,
+    pathPrefix: '/',
+    siteMetadata: siteMetadata,
+    plugins: [
+        'gatsby-plugin-react-helmet',
+        'gatsby-source-data',
+        'gatsby-transformer-remark',
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: 'pages',
+                path: `${__dirname}/src/pages`
+            }
         },
-      },
-    },
-    {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/static/img`,
-        name: "uploads",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/pages`,
-        name: "pages",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/img`,
-        name: "images",
-      },
-    },
-    `gatsby-plugin-image`,
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-relative-images",
+        {
+            resolve: 'gatsby-transformer-remark',
             options: {
-              name: "uploads",
+                plugins: ['gatsby-remark-prismjs'],
             },
-          },
-          {
-            resolve: "gatsby-remark-images",
+        },
+        {
+            resolve: 'gatsby-remark-code-buttons',
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 2048,
+                // Optional button container class name. Defaults
+                // to 'gatsby-code-button-container'.
+                buttonContainerClass: 'customButtonContainerClass',
+                // Optional button class name. Defaults to 'gatsby-code-button'.
+                buttonClass: 'customButtonClass',
+                // Optional button text. Defaults to ''.
+                buttonText: 'customButtonText',
+                // Optional svg icon class name. Defaults to 'gatsby-code-button-icon'.
+                svgIconClass: 'customSvgIconClass',
+                // Optional svg icon. Defaults to svg string and can be
+                // replaced with any other valid svg. Use custom classes
+                // in the svg string and skip `iconClass` option.
+                svgIcon: 'customSvgIcon',
+                // Optional tooltip text. Defaults to ''.
+                tooltipText: 'customTooltipText',
+                // Optional toaster class name. Defaults to ''.
+                toasterClass: 'customToasterClass',
+                // Optional toaster text class name. Defaults to ''.
+                toasterTextClass: 'customToasterTextClass',
+                // Optional toaster text. Defaults to ''.
+                toasterText: 'customToasterText',
+                // Optional toaster duration. Defaults to 3500.
+                toasterDuration: 5000
             },
-          },
-          {
-            resolve: "gatsby-remark-copy-linked-files",
+        },
+        {
+            resolve: 'gatsby-plugin-disqus',
             options: {
-              destinationDir: "static",
+                shortname: 'webdevhub-1',
+            }
+        },
+        {
+            resolve: 'gatsby-plugin-no-sourcemaps',
+        },
+        {
+            resolve: 'gatsby-plugin-sass',
+            options: {}
+        },
+        {
+            resolve: 'gatsby-remark-page-creator',
+            options: {}
+        },
+        {
+            resolve: '@stackbit/gatsby-plugin-menus',
+            options: {
+                sourceUrlPath: 'fields.url',
+                pageContextProperty: 'menus',
             },
-          },
-        ],
-      },
-    },
-    {
-      resolve: "gatsby-plugin-netlify-cms",
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
-      options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"], // applies purging only on the bulma css file
-      },
-    }, // must be after other CSS plugins
-    "gatsby-plugin-netlify", // make sure to keep it last in the array
-  ],
+        },
+        {
+            resolve: 'gatsby-plugin-disqus',
+            options: {
+                shortname: 'webdevhub-1'
+            }
+        },
+    ]
 };
